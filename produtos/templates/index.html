@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+{% load static %}
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+
+    <!--CSS AND BOOTSTRAP-->
+    {% bootstrap_css %}
+    <link rel="stylesheet" href=" {% static 'css/styles.css' %} ">
+
+</head>
+
+<body>
+
+    <!--CABEÇALHO-->
+    <header>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" href=" {% url 'index' %} ">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=" {% url 'cadastro' %} ">Cadastro</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=" {% url 'contato' %} ">Contato</a>
+            </li>
+        </ul>
+    </header>
+
+    <!--MAIN-->
+
+    <div class="container">
+        <h1>Anúncios</h1>
+
+        <div class="card-columns">
+
+            {% for anuncio in anuncios %}
+
+            <div class="card" style="width: 18rem;">
+                <img src="{{ anuncio.imagem.url }}" class="card-img-top" alt="..." height='200'>
+                <div class="card-body">
+                    <h2 class="card-title"> {{anuncio.nome}}  </h2>
+                    <h3>R$ {{anuncio.preco}}</h3>
+                    <p class="card-text"> Telefone: {{anuncio.contato}} </p>
+                    <p class="card-footer"> {{anuncio.descricao}} </p>
+                </div>
+            </div>
+            
+        {% endfor %}
+
+        </div>
+
+        
+        
+
+       
+
+
+
+
+
+    <!--FOOTER-->
+
+
+    <!--SCRIPTS-->
+    {% bootstrap_javascript jquery='full' %}
+</body>
+
+</html>

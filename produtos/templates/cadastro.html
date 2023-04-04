@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+{% load static %}
+
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CADASTRO</title>
+
+    <!--CSS AND BOOTSTRAP-->
+    {% bootstrap_css %}
+    <link rel="stylesheet" href=" {% static 'css/styles.css' %} ">
+
+</head>
+<body>
+    
+    <!--CABEÇALHO-->
+    <header>
+        <ul class="nav justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" href=" {% url 'index' %} ">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=" {% url 'cadastro' %} ">Cadastro</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href=" {% url 'contato' %} ">Contato</a>
+            </li>
+        </ul>
+    </header>
+
+    <!--MAIN-->
+
+    <div class="container">
+        <h1>Cadastro de Anúncio</h1>
+        {% bootstrap_messages %}
+
+        <form action="{% url 'cadastro' %}" method='post', class="form", autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            {% buttons %}
+            <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
+            {% endbuttons %}
+
+        </form>
+    </div>
+    
+
+    <!--FOOTER-->
+
+
+    <!--SCRIPTS-->
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>
